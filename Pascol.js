@@ -76,6 +76,12 @@ Pascol.js
     return (num < 0) ? -1 : (num === 0) ? 1 : parseInt(num * fact(num - 1),10);
   };
 
+  var perm = Pascol.perm = function(n,r) {
+    if(isNaN(n) || isNaN(r)) return NaN
+    if(n <= r) return fact(n);
+    return (r===0) ? 1 : parseInt(n * perm(n-1,r-1)); 
+  };
+
   var sum = Pascol.sum =  function(data,fn) {
     var total = 0,
         leng = 0,

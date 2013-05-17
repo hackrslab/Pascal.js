@@ -1,19 +1,19 @@
-# Pascol
-Pascol.js 는 Javascript 내장객체인 Math Object 에서 지원하지 않는 수학,통계,수치, 물리적 계산등의 데이터를 다룰때 필요한 모듈 입니다.
+# Pascal
+Pascal.js 는 Javascript 내장객체인 Math Object 에서 지원하지 않는 수학,통계,수치, 물리적 계산등의 데이터를 다룰때 필요한 모듈 입니다.
 차트,Canvas,통계,Vector  등과 같이 수치 계산이 빈번히 일어나는 작업을 할때 유용히 사용하실 수 있습니다.
 현재 배포 버전이 아닌 개발버전을 먼저 올려 두었습니다. 자세한 API 가 없는 관계로 `test` 를 참고 하시기 바랍니다.
 
 ## 모듈 
-Pascol 는 기본적으로  `module`에 포함되어 지거나 `Global Scope`의 `Pascol` 네임스페이스만을 사용합니다.
+Pascal 는 기본적으로  `module`에 포함되어 지거나 `Global Scope`의 `Pascal` 네임스페이스만을 사용합니다.
 
 ```javascript
 if(typeof exports !== 'undefined') {
   if(typeof module !== 'undefined' && moduel.exports) {
-     exports = module.exports = Pascol;  
+     exports = module.exports = Pascal;  
   }
-  exports.Pascol = Pascol;
+  exports.Pascal = Pascal;
 } else {
-root.Pascol = Pascol; 
+root.Pascal = Pascal; 
 }
 ```
 
@@ -24,23 +24,23 @@ root.Pascol = Pascol;
 * 테스트가 포함된 저장소 전체를 원하는 경우.
 
 ```
-https://github.com/insanehong/Pascol.js
+https://github.com/insanehong/Pascal.js
 ```
 
 Or
 
 ```
-git clone git://github.com/insanehong/Pascol.js.git
+git clone git://github.com/insanehong/Pascal.js.git
 ```
 
 ## Unit Test
-[test Page](http://insanehong.kr/Pascol.js/test/index.html)
+[test Page](http://insanehong.kr/Pascal.js/test/index.html)
 
 ## API Reference
-[한국](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
+[한국](https://github.com/insanehong/Pascal.js/doc/ko/API.md)
 
 # for Contributors
-Pascol.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 
+Pascal.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 
 참여 방법은 test 디렉토리에 수정 혹은 추가 한 메소드에 대한 테스트 코드를 작성하고 test/index.html 에 추가된 테스트 코드를 삽입 합니다. 
 웹 단위 테스트 페이지에서 오류가 없음을 확인 하신후 Pull Request 날려주시면 됩니다. 
 
@@ -49,6 +49,6 @@ Pascol.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 
 ## LiCENSE
 The MIT License
 
-Copyright (c) 2013 The Pascol.js Authors 
+Copyright (c) 2013 The Pascal.js Authors 
 
 See the LICENSE file for details.

@@ -3,30 +3,30 @@ Copyright (c) 2013 Insanehong and other contributors
 
 MIT LISENCE
 
-Pascol.js
+Pascal.js
 */
 (function() {
     
   var root = this;
      
-  var previousPascol = root.Pascol,
+  var previousPascal = root.Pascal,
       undef = 'undefined';
 
-   var Pascol  = function(obj) {
-      if (obj instanceof Pascol) return obj;
-      if (!(this instanceof Pascol)) return new Pascol(obj);  
+   var Pascal  = function(obj) {
+      if (obj instanceof Pascal) return obj;
+      if (!(this instanceof Pascal)) return new Pascal(obj);  
    };
 
    if(typeof exports !== 'undefined') {
       if(typeof module !== 'undefined' && moduel.exports) {
-         exports = module.exports = Pascol;  
+         exports = module.exports = Pascal;  
       }
-      exports.Pascol = Pascol;
+      exports.Pascal = Pascal;
    } else {
-    root.Pascol = Pascol; 
+    root.Pascal = Pascal; 
    }
 
-   Pascol.VERSION = '0.1.0';
+   Pascal.VERSION = '0.1.0';
 
   function ascSort(a,b) {
     return (a < b) ? -1 : (a > b) ? 1 : 0;
@@ -53,36 +53,36 @@ Pascol.js
     return tmep;    
   }
 
-  var round = Pascol.round = function(number,dec) {
+  var round = Pascal.round = function(number,dec) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
     return (typeof dec === 'undefined' || isNaN(dec)) ? Math.round(number) : Math.round(number*Math.pow(10,dec))/Math.pow(10,dec);   
   };
 
-  var ceil = Pascol.ceil = function(number,dec) {
+  var ceil = Pascal.ceil = function(number,dec) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
     return (typeof dec === 'undefined' || isNaN(dec)) ? Math.ceil(number) : Math.ceil(number*Math.pow(10,dec))/Math.pow(10,dec);   
   };
 
-  var floor = Pascol.floor = function(number,dec) {
+  var floor = Pascal.floor = function(number,dec) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
     return (typeof dec === 'undefined' || isNaN(dec)) ? Math.floor(number) : Math.floor(number*Math.pow(10,dec))/Math.pow(10,dec);   
   };
 
-  var fact = Pascol.fact = function(num) {
+  var fact = Pascal.fact = function(num) {
     if(isNaN(num)) return NaN;
     return (num < 0) ? -1 : (num === 0) ? 1 : parseInt(num * fact(num - 1),10);
   };
 
-  var perm = Pascol.perm = function(n,r) {
+  var perm = Pascal.perm = function(n,r) {
     if(isNaN(n) || isNaN(r)) return NaN
     if(n <= r) return fact(n);
     return (r===0) ? 1 : parseInt(n * perm(n-1,r-1)); 
   };
 
-  var sum = Pascol.sum =  function(data,fn) {
+  var sum = Pascal.sum =  function(data,fn) {
     var total = 0,
         leng = 0,
         result,
@@ -102,7 +102,7 @@ Pascol.js
     return total;
   };
 
-  var avg = Pascol.avg = function(data,fn) {
+  var avg = Pascal.avg = function(data,fn) {
     var total=0,
         i,
         result;
@@ -114,7 +114,7 @@ Pascol.js
     return round(total/data.length,2);
   };
 
-  var variance = Pascol.variance = function(data,fn) {
+  var variance = Pascal.variance = function(data,fn) {
     var average;
     
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
@@ -122,11 +122,11 @@ Pascol.js
     return avg(data,function(n){ return Math.pow(n-average,2); });      
   };
 
-  var stdev = Pascol.stdev = function(data,fn) {
+  var stdev = Pascal.stdev = function(data,fn) {
     return round(Math.sqrt(variance(data,fn)),2);
   };
   
-  var median = Pascol.median = function(data,fn) {
+  var median = Pascal.median = function(data,fn) {
     var leng ,
         middle;
     
@@ -149,13 +149,13 @@ Pascol.js
     }
   };    
 
-  var min = Pascol.min = function(data,fn) {
+  var min = Pascal.min = function(data,fn) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);
     return (isEmpty(data)) ? null :  Math.min.apply(null,data); ;
   };
 
-  var max = Pascol.max = function(data) {
+  var max = Pascal.max = function(data) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);
     return (isEmpty(data)) ? null :  Math.max.apply(null,data); ;

@@ -1,5 +1,5 @@
 # API Reference
-Pascol.js 는 Array, Number, Json 등의 데이터를 다룰 예정이며 현재는 Array와 Number 타입의 데이터만 지원하고 있습니다. 
+Pascal.js 는 Array, Number, Json 등의 데이터를 다룰 예정이며 현재는 Array와 Number 타입의 데이터만 지원하고 있습니다. 
 Json 데이터의 경우 `0.2.0` Version 에서 추가할 예정입니다.  
 
 ## API for Array 
@@ -31,6 +31,6 @@ Json 데이터의 경우 `0.2.0` Version 에서 추가할 예정입니다.
 ## LiCENSE
 The MIT License
 
-Copyright (c) 2013 The Pascol.js Authors
+Copyright (c) 2013 The Pascal.js Authors
 
 See the LICENSE file for details.

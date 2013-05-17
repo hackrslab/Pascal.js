@@ -1,6 +1,7 @@
 # Pascol
 Pascol.js 는 Javascript 내장객체인 Math Object 에서 지원하지 않는 수학,통계,수치, 물리적 계산등의 데이터를 다룰때 필요한 모듈 입니다.
 차트,Canvas,통계,Vector  등과 같이 수치 계산이 빈번히 일어나는 작업을 할때 유용히 사용하실 수 있습니다.
+현재 배포 버전이 아닌 개발버전을 먼저 올려 두었습니다. 자세한 API 가 없는 관계로 `test` 를 참고 하시기 바랍니다.
 
 ## 모듈 
 Pascol 는 기본적으로  `module`에 포함되어 지거나 `Global Scope`의 `Pascol` 네임스페이스만을 사용합니다.
@@ -23,17 +24,20 @@ root.Pascol = Pascol;
 * 테스트가 포함된 저장소 전체를 원하는 경우.
 
 ```
-https://github.com/insanehong/Pascol
+https://github.com/insanehong/Pascol.js
 ```
 
 Or
 
 ```
-git clone git://github.com/insanehong/Pascol.git
+git clone git://github.com/insanehong/Pascol.js.git
 ```
 
+## Unit Test
+[test Page](https://github.com/insanehong/Pascol.js/test)
+
 ## API Reference
-[ko](https://github.com/insanehong/Pascol/doc/ko/API.md)
+[한국어](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
 
 # for Contributors
 Pascol.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 

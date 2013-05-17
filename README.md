@@ -24,17 +24,20 @@ root.Pascol = Pascol;
 * 테스트가 포함된 저장소 전체를 원하는 경우.
 
 ```
-https://github.com/insanehong/Pascol
+https://github.com/insanehong/Pascol.js
 ```
 
 Or
 
 ```
-git clone git://github.com/insanehong/Pascol.git
+git clone git://github.com/insanehong/Pascol.js.git
 ```
 
+## Unit Test
+[test Page](https://github.com/insanehong/Pascol.js/test)
+
 ## API Reference
-[ko](https://github.com/insanehong/Pascol/doc/ko/API.md)
+[한국어](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
 
 # for Contributors
 Pascol.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 

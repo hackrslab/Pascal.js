@@ -36,8 +36,8 @@ git clone git://github.com/insanehong/Pascal.js.git
 ## Unit Test
 [test Page](http://insanehong.kr/Pascal.js/test/index.html)
 
-## API Reference
-[한국어](https://github.com/insanehong/Pascal.js/doc/ko/API.md)
+## Document
+[한국어](https://github.com/insanehong/Pascal.js/tree/master/doc/ko)
 
 # for Contributors
 Pascal.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 

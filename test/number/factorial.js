@@ -21,7 +21,7 @@ test('-1!',function(){
 
 test('-10!',function(){
 	var fn = Pascol.fact(-10);
-	deepEqual(fn, -1, "Pascol.fact(-10) === -10");
+	deepEqual(fn, -1, "Pascol.fact(-10) === -1");
 });
 
 test('문자를 넘길 경우',function(){

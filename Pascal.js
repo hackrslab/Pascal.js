@@ -155,7 +155,7 @@ Pascal.js
     return (isEmpty(data)) ? null :  Math.min.apply(null,data); ;
   };
 
-  var max = Pascal.max = function(data) {
+  var max = Pascal.max = function(data,fn) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);
     return (isEmpty(data)) ? null :  Math.max.apply(null,data); ;

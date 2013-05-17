@@ -34,10 +34,10 @@ git clone git://github.com/insanehong/Pascol.js.git
 ```
 
 ## Unit Test
-[test Page](https://github.com/insanehong/Pascol.js/test)
+[test Page](http://insanehong.kr/Pascol.js/test/index.html)
 
 ## API Reference
-[한국어](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
+[한국](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
 
 # for Contributors
 Pascol.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 

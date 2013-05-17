@@ -34,7 +34,7 @@ git clone git://github.com/insanehong/Pascol.js.git
 ```
 
 ## Unit Test
-[test Page](https://github.com/insanehong/Pascol.js/test)
+[test Page](http://insanehong.kr/Pascol.js/test/index.html)
 
 ## API Reference
 [한국어](https://github.com/insanehong/Pascol.js/doc/ko/API.md)
@@ -52,3 +52,4 @@ The MIT License
 Copyright (c) 2013 The Pascol.js Authors 
 
 See the LICENSE file for details.
+어

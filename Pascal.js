@@ -162,9 +162,7 @@ Pascal.js
     q3 = quantile(data,0.75),
     q4 = max(data);
 
-    return (data.length === 0 ) 
-            ? null 
-            : { q1 : q1, q2 : q2, q3: q3, q4 : q4 };
+    return (data.length === 0 ) ? null : [q0,q1,q2,q3,q4];
   };
 
   var min = Pascal.min = function(data,fn) {
@@ -179,4 +177,5 @@ Pascal.js
     return (isEmpty(data)) ? null :  Math.max.apply(null,data);
   };
   
+
 }).call(this);

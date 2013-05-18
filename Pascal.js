@@ -177,5 +177,10 @@ Pascal.js
     return (isEmpty(data)) ? null :  Math.max.apply(null,data);
   };
   
+  var minmax = Pascal.minmax = function(data,fn) {
+    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    data = data.filter(isNumber);
+    return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
+  };
 
 }).call(this);

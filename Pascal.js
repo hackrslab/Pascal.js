@@ -77,9 +77,9 @@ Pascal.js
   };
 
   var perm = Pascal.perm = function(n,r) {
-    if(isNaN(n) || isNaN(r)) return NaN
+    if(isNaN(n) || isNaN(r)) return NaN;
     if(n <= r) return fact(n);
-    return (r===0) ? 1 : parseInt(n * perm(n-1,r-1)); 
+    return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
   };
 
   var sum = Pascal.sum =  function(data,fn) {
@@ -127,38 +127,39 @@ Pascal.js
   };
   
   var median = Pascal.median = function(data,fn) {
-    var leng ,
-        middle;
+    return quantile(data,0.5,fn);  
+  };    
+
+  var quantile = Pascal.quantile = function(data,p,fn) {
+    var h , fh, N , i, q;
     
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
-
-    data = data.filter(isNumber).sort(ascSort);
-
-    if(isEmpty(data)) return null;
-
-    leng = data.length;
     
-    if(leng < 2) return avg(data);
-        
-    if(leng%2 === 0 ) {
-      middle = leng/2;
-      return avg([data[middle],data[middle-1]]);
-    } else {
-      middle = leng - floor(leng/2)-1;
-      return data[middle];
-    }
-  };    
+    data = data.filter(isNumber).sort(ascSort);
+    
+    N = data.length;
+    
+    if(N === 0 ) return null;
+
+    h = ((N - 1) * p) +1;
+    hf = floor(h);
+    i = hf -1;
+    
+    q = data[i] + ((h-hf)*(data[hf] - data[i]));
+    
+    return q;
+  };
 
   var min = Pascal.min = function(data,fn) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);
-    return (isEmpty(data)) ? null :  Math.min.apply(null,data); ;
+    return (isEmpty(data)) ? null :  Math.min.apply(null,data);
   };
 
   var max = Pascal.max = function(data,fn) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);
-    return (isEmpty(data)) ? null :  Math.max.apply(null,data); ;
+    return (isEmpty(data)) ? null :  Math.max.apply(null,data);
   };
   
 }).call(this);

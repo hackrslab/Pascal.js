@@ -150,6 +150,23 @@ Pascal.js
     return q;
   };
 
+  var quartile = Pascal.quartile = function(data,fn) {
+    var q1, q2, q3, q4;
+    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    
+    data = data.filter(isNumber).sort(ascSort);
+    
+    q0 = min(data);
+    q1 = quantile(data,0.25),
+    q2 = quantile(data,0.5),
+    q3 = quantile(data,0.75),
+    q4 = max(data);
+
+    return (data.length === 0 ) 
+            ? null 
+            : { q1 : q1, q2 : q2, q3: q3, q4 : q4 };
+  };
+
   var min = Pascal.min = function(data,fn) {
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     data = data.filter(isNumber);

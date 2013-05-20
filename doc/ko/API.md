@@ -20,6 +20,7 @@ Json 데이터의 경우 `0.2.0` Version 에서 추가할 예정입니다.
 기본적인 단일 수치에 대한 처리를 지원하는 API 입니다. `Math Object` 에서 지원하는 기본 method 와 동일한 기능을 수행하는 API가 포함되어 져 있습니다. 
 
 * abs(n) : n 의 절대값을 반환 합니다. 내부적으로 Math.abs 를 사용 합니다. Pascal.js 사용시 Math Object를 별도로 사용하지 않아도 가능하도록 추가 되었습니다.
+* pow(n,exp) : n 의 exp 제곱 값을 반환 합니다. 내부적으로 Math.pow 를 사용 합니다. Pascal.js 사용시 Math Object를 별도로 사용하지 않아도 가능하도록 추가 되었습니다.
 * round(n,digits) : 소수점 반올림 값을 반환 합니다. digits+1 자릿수에서 반올림되어 집니다.
 * ceil(n,digits) : 소수점 올림 값을 반환 합니다. digits+1 자릿수에서 올림되어 집니다.
 * floor(n,digits) : 소수점 버림 값을 반환 합니다. digits+1 자릿수에서 버림되어 집니다.

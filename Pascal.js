@@ -60,6 +60,10 @@ Pascal.js
     return Math.abs(number);
   };
 
+  var pow = Pascal.pow = function(number,exp) {
+    return Math.pow(number,exp);
+  };
+
   var round = Pascal.round = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);

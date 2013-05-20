@@ -105,6 +105,14 @@ Pascal.js
     return (typeof b === 'undefined') ? Math.log(a) : (b===1) ? 0 : Math.log(a) / Math.log(b);
   };
 
+  var log10 = Pascal.log10 = function(a) {
+    return log(a,10);
+  };
+
+  var log2 = Pascal.log2 = function(a) {
+    return log(a,2);
+  };
+
   var round = Pascal.round = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);

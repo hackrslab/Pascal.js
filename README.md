@@ -8,7 +8,7 @@ Pascal 는 기본적으로  `module`에 포함되어 지거나 `Global Scope`의
 
 ```javascript
 if(typeof exports !== 'undefined') {
-  if(typeof module !== 'undefined' && moduel.exports) {
+  if(typeof module !== 'undefined' && module.exports) {
      exports = module.exports = Pascal;  
   }
   exports.Pascal = Pascal;

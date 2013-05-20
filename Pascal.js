@@ -142,6 +142,13 @@ Pascal.js
     return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
   };
 
+  var add = Pascal.add = function(data,an) {
+    data = data.filter(isNumber);
+    if(data.length===0) return null;
+    data = fnEach(data,function(n) { return n + an; });
+    return data ;
+  };
+
   var sum = Pascal.sum =  function(data,fn) {
     var total = 0,
         leng = 0,
@@ -162,6 +169,8 @@ Pascal.js
     return total;
   };
 
+  
+  
   var mean = Pascal.mean = function(data,fn) {
     var total=0,
         i,

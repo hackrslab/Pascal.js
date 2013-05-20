@@ -64,22 +64,62 @@ Pascal.js
     return Math.pow(number,exp);
   };
 
+  var acos = Pascal.acos = function(number) {
+    return Math.acos(number);
+  };
+
+  var asin = Pascal.asin = function(number) {
+    return Math.asin(number);
+  };
+
+  var atan = Pascal.atan = function(number) {
+    return Math.atan(number);
+  };
+
+  var atan2 = Pascal.atan2 = function(y,x) {
+    return Math.atan2(y,x);
+  };
+
+  var cos = Pascal.cos = function(radians) {
+    return Math.cos(radians);
+  };
+
+  var sin = Pascal.sin = function(radians) {
+    return Math.sin(radians);
+  };
+
+  var tan = Pascal.tan = function(radians) {
+    return Math.tan(radians);
+  };
+
+  var sqrt = Pascal.sqrt = function(number) {
+    return Math.sqrt(number);
+  };
+
+  var exp = Pascal.exp = function(number) {
+    return Math.exp(number);
+  };
+
+  var log = Pascal.log = function(number) {
+    return Math.log(number);
+  };
+
   var round = Pascal.round = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
-    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.round(number) : Math.round(number*Math.pow(10,digits))/Math.pow(10,digits);   
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.round(number) : Math.round(number*pow(10,digits))/pow(10,digits);   
   };
 
   var ceil = Pascal.ceil = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
-    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.ceil(number) : Math.ceil(number*Math.pow(10,digits))/Math.pow(10,digits);   
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.ceil(number) : Math.ceil(number*pow(10,digits))/pow(10,digits);   
   };
 
   var floor = Pascal.floor = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
-    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(number) : Math.floor(number*Math.pow(10,digits))/Math.pow(10,digits);   
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(number) : Math.floor(number*pow(10,digits))/pow(10,digits);   
   };
 
   var fact = Pascal.fact = function(num) {
@@ -130,11 +170,11 @@ Pascal.js
     
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
     average = mean(data);
-    return mean(data,function(n){ return Math.pow(n-average,2); });      
+    return mean(data,function(n){ return pow(n-average,2); });      
   };
 
   var stdev = Pascal.stdev = function(data,fn) {
-    return round(Math.sqrt(variance(data,fn)),2);
+    return round(sqrt(variance(data,fn)),2);
   };
   
   var median = Pascal.median = function(data,fn) {
@@ -193,10 +233,5 @@ Pascal.js
     data = data.filter(isNumber);
     return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
   };
-
-  var maxtrixsum = matrix.sum = function(data) {
-
-  };
-
 
 }).call(this);

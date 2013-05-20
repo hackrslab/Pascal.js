@@ -102,7 +102,7 @@ Pascal.js
     return total;
   };
 
-  var avg = Pascal.avg = function(data,fn) {
+  var mean = Pascal.mean = function(data,fn) {
     var total=0,
         i,
         result;
@@ -118,8 +118,8 @@ Pascal.js
     var average;
     
     if(typeof fn !== 'undefined') data = fnEach(data,fn);
-    average = avg(data);
-    return avg(data,function(n){ return Math.pow(n-average,2); });      
+    average = mean(data);
+    return mean(data,function(n){ return Math.pow(n-average,2); });      
   };
 
   var stdev = Pascal.stdev = function(data,fn) {

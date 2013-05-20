@@ -100,8 +100,9 @@ Pascal.js
     return Math.exp(number);
   };
 
-  var log = Pascal.log = function(number) {
-    return Math.log(number);
+  var log = Pascal.log = function(a,b) {
+    if(a <= 0) return NaN;
+    return (typeof b === 'undefined') ? Math.log(a) : (b===1) ? 0 : Math.log(a) / Math.log(b);
   };
 
   var round = Pascal.round = function(number,digits) {

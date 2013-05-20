@@ -12,21 +12,24 @@ Pascal.js
   var previousPascal = root.Pascal,
       undef = 'undefined';
 
-   var Pascal  = function(obj) {
-      if (obj instanceof Pascal) return obj;
-      if (!(this instanceof Pascal)) return new Pascal(obj);  
-   };
+  var Pascal  = function(obj) {
+    if (obj instanceof Pascal) return obj;
+    if (!(this instanceof Pascal)) return new Pascal(obj);  
+  };
 
-   if(typeof exports !== 'undefined') {
-      if(typeof module !== 'undefined' && moduel.exports) {
-         exports = module.exports = Pascal;  
-      }
-      exports.Pascal = Pascal;
-   } else {
-    root.Pascal = Pascal; 
-   }
+  if(typeof exports !== 'undefined') {
+    if(typeof module !== 'undefined' && moduel.exports) {
+       exports = module.exports = Pascal;  
+    }
+    exports.Pascal = Pascal;
+  } else {
+  root.Pascal = Pascal; 
+  }
 
-   Pascal.VERSION = '0.1.0';
+  var matrix = Pascal.maxtrix = {},
+      array = Pascal.array = {};
+ 
+  Pascal.VERSION = '0.1.0';
 
   function ascSort(a,b) {
     return (a < b) ? -1 : (a > b) ? 1 : 0;
@@ -53,22 +56,26 @@ Pascal.js
     return tmep;    
   }
 
-  var round = Pascal.round = function(number,dec) {
-    if(isNaN(number)) return NaN;
-    else number = Number(number);
-    return (typeof dec === 'undefined' || isNaN(dec)) ? Math.round(number) : Math.round(number*Math.pow(10,dec))/Math.pow(10,dec);   
+  var abs = Pascal.abs = function(number) {
+    return Math.abs(number);
   };
 
-  var ceil = Pascal.ceil = function(number,dec) {
+  var round = Pascal.round = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
-    return (typeof dec === 'undefined' || isNaN(dec)) ? Math.ceil(number) : Math.ceil(number*Math.pow(10,dec))/Math.pow(10,dec);   
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.round(number) : Math.round(number*Math.pow(10,digits))/Math.pow(10,digits);   
   };
 
-  var floor = Pascal.floor = function(number,dec) {
+  var ceil = Pascal.ceil = function(number,digits) {
     if(isNaN(number)) return NaN;
     else number = Number(number);
-    return (typeof dec === 'undefined' || isNaN(dec)) ? Math.floor(number) : Math.floor(number*Math.pow(10,dec))/Math.pow(10,dec);   
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.ceil(number) : Math.ceil(number*Math.pow(10,digits))/Math.pow(10,digits);   
+  };
+
+  var floor = Pascal.floor = function(number,digits) {
+    if(isNaN(number)) return NaN;
+    else number = Number(number);
+    return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(number) : Math.floor(number*Math.pow(10,digits))/Math.pow(10,digits);   
   };
 
   var fact = Pascal.fact = function(num) {
@@ -182,5 +189,10 @@ Pascal.js
     data = data.filter(isNumber);
     return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
   };
+
+  var maxtrixsum = matrix.sum = function(data) {
+
+  };
+
 
 }).call(this);

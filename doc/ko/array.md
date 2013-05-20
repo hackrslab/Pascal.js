@@ -27,7 +27,7 @@ Pascal.sum(array,fn);
 ## Array 관련 API
 
 * sum
-* avg
+* mean
 * max
 * min
 * minmax
@@ -50,17 +50,17 @@ var var array = [1,2,3,4,5,6,7,8,9,10];
 Pascal.sum(array, funtion(n) { return n * 10;});
 > 550;
 ```
-## Pascal.avg(array,fn) 
+## Pascal.mean(array,fn) 
 array 로 넘어온 배열의 구성 값중 숫자형 데이터들의 평균을 구합니다. 두번째 인자로 배열 재구성을 위한 함수를 넘길 수 있습니다. 
 함수 첫번째 인자로는 배열의 구성값, 두번째 인자로는 배열내 인덱스 값을 사용합니다. 
 
 ```javascript
 var array = [1,2,3,4,5,6,7,8,9,10]; 
-Pascal.avg(array);
+Pascal.mean(array);
 > 5.5
 
 var var array = [1,2,3,4,5,6,7,8,9,10]; 
-Pascal.avg(array, funtion(n) { return n * 10;});
+Pascal.mean(array, funtion(n) { return n * 10;});
 > 55;
 ```
 

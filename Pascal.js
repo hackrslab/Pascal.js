@@ -26,11 +26,22 @@ Pascal.js
   root.Pascal = Pascal; 
   }
 
-  var matrix = Pascal.maxtrix = {},
-      array = Pascal.array = {};
- 
   Pascal.VERSION = '0.1.0';
 
+  var matrix = Pascal.maxtrix = {},
+      array = Pascal.array = {},
+      PI = Pascal.PI = Math.PI,
+      E = Pascal.E = Math.E,
+      abs = Pascal.abs = Math.abs,
+      pow = Pascal.pow = Math.pow,
+      acos = Pascal.acos = Math.acos,
+      atan2 = Pascal.atan2 = Math.atan2,
+      cos = Pascal.cos = Math.cos,
+      sin = Pascal.sin = Math.sin,
+      tan = Pascal.tan = Math.tan,
+      sqrt = Pascal.sqrt = Math.sqrt,
+      exp = Pascal.exp = Math.exp;
+ 
   function ascSort(a,b) {
     return (a < b) ? -1 : (a > b) ? 1 : 0;
   }
@@ -55,50 +66,6 @@ Pascal.js
     for(i=0; i < length; i++) tmep.push(fn.call(array,array[i],i)) ;  
     return tmep;    
   }
-
-  var abs = Pascal.abs = function(number) {
-    return Math.abs(number);
-  };
-
-  var pow = Pascal.pow = function(number,exp) {
-    return Math.pow(number,exp);
-  };
-
-  var acos = Pascal.acos = function(number) {
-    return Math.acos(number);
-  };
-
-  var asin = Pascal.asin = function(number) {
-    return Math.asin(number);
-  };
-
-  var atan = Pascal.atan = function(number) {
-    return Math.atan(number);
-  };
-
-  var atan2 = Pascal.atan2 = function(y,x) {
-    return Math.atan2(y,x);
-  };
-
-  var cos = Pascal.cos = function(radians) {
-    return Math.cos(radians);
-  };
-
-  var sin = Pascal.sin = function(radians) {
-    return Math.sin(radians);
-  };
-
-  var tan = Pascal.tan = function(radians) {
-    return Math.tan(radians);
-  };
-
-  var sqrt = Pascal.sqrt = function(number) {
-    return Math.sqrt(number);
-  };
-
-  var exp = Pascal.exp = function(number) {
-    return Math.exp(number);
-  };
 
   var log = Pascal.log = function(a,b) {
     if(a <= 0) return NaN;
@@ -169,8 +136,6 @@ Pascal.js
     return total;
   };
 
-  
-  
   var mean = Pascal.mean = function(data,fn) {
     var total=0,
         i,

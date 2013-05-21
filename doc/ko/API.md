@@ -20,15 +20,22 @@ Json 데이터의 경우 `0.2.0` Version 에서 추가할 예정입니다.
 ## API for Number
 기본적인 단일 수치에 대한 처리를 지원하는 API 입니다. `Math Object` 에서 지원하는 기본 method 와 동일한 기능을 수행하는 API가 포함되어 져 있습니다. 
 
-* abs(n) : n 의 절대값을 반환 합니다. 내부적으로 Math.abs 를 사용 합니다. Pascal.js 사용시 Math Object를 별도로 사용하지 않아도 가능하도록 추가 되었습니다.
-* pow(n,exp) : n 의 exp 제곱 값을 반환 합니다. 내부적으로 Math.pow 를 사용 합니다. Pascal.js 사용시 Math Object를 별도로 사용하지 않아도 가능하도록 추가 되었습니다.
+* abs(n) = Math.abs(n) 결과를 반환합니다. 
+* pow(n,exp) = Math.pow(n,exp) 결과를 반환합니다. 
+* acos = Math.acos(n) 결과를 반환합니다. 
+* cos = Math.cos(n) 결과를 반환합니다. 
+* sin = Math.sin(n) 결과를 반환합니다. 
+* tan = Math.tan(n) 결과를 반환합니다. 
+* sqrt = Math.sqrt(n) 결과를 반환합니다. 
+* exp = Math.exp(n) 결과를 반환합니다. 
 * log(a[,b]) : a 자연로그 값을 반환합니다. 양의 실수 b 를 넘길 경우 b를 밑수로 하는 로그 값을 반환 합니다.
 * log10(a) : 밑수가 10인 상용로그 값을 반환 합니다. 내부적으로 Pascal.og(a,10) 와 동일하게 작동합니다.; 
 * log2(a) : 밑수가 2인 로그 값을 반환 합니다. 내부적으로 Pascal.og(a,2) 와 동일하게 작동합니다.; 
 * round(n[,digits]) : 소수점 반올림 값을 반환 합니다. digits+1 자릿수에서 반올림되어 집니다.
 * ceil(n[,digits]) : 소수점 올림 값을 반환 합니다. digits+1 자릿수에서 올림되어 집니다.
 * floor(n[,digits]) : 소수점 버림 값을 반환 합니다. digits+1 자릿수에서 버림되어 집니다.
-* fact(n) : Factorial 값을 반환 합니다. 단 현재는 parseInt 로 처리 가능한 수치만을 반환합니다. 
+* gamma(z) : gamma 값을 반환 합니다.  
+* fact(n) : gamma(z+1) == n! 을 이용하여 factorial 을 계산하여 반환 합니다. 
 * perm(n,r) : nPr의 순열 값을 반환 합니다. 단 현재는 parseInt 로 처리 가능한 수치만을 반환합니다. 
 
 ## 추가 예정인 API

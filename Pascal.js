@@ -98,15 +98,34 @@ Pascal.js
     return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(number) : Math.floor(number*pow(10,digits))/pow(10,digits);   
   };
 
-  var fact = Pascal.fact = function(num) {
-    if(isNaN(num)) return NaN;
-    return (num < 0) ? -1 : (num === 0) ? 1 : parseInt(num * fact(num - 1),10);
-  };
-
-  var perm = Pascal.perm = function(n,r) {
+   var perm = Pascal.perm = function(n,r) {
     if(isNaN(n) || isNaN(r)) return NaN;
     if(n <= r) return fact(n);
     return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
+  };
+
+  var gamma = Pascal.gamma = function(z) {
+    var g = 7,
+        p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905,
+            -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7],
+        x = p[0],
+        length = p.length,
+        i, t, rs;
+
+    if(z < 0.5 ) return PI / ( sin(PI * z) * gamma(1 - z));
+    
+    z -= 1;
+    t = z + g + 0.5;
+    
+    for (i=1 ; i < length; i++) x += p[i] / (z + i );
+       
+    rs = parseFloat(sqrt(2 * PI) * pow(t, (z + 0.5)) * exp(-t) * x);
+    return (z === floor(z)) ? round(rs) : rs;
+  };
+
+  var fact = Pascal.fact = function(num) {
+    if(isNaN(num)) return NaN;
+    return (num < 0) ? -1 : (num === 0) ? 1 : gamma(num+1);
   };
 
   var add = Pascal.add = function(data,an) {

@@ -35,6 +35,7 @@ Json 데이터의 경우 `0.2.0` Version 에서 추가할 예정입니다.
 * ceil(n[,digits]) : 소수점 올림 값을 반환 합니다. digits+1 자릿수에서 올림되어 집니다.
 * floor(n[,digits]) : 소수점 버림 값을 반환 합니다. digits+1 자릿수에서 버림되어 집니다.
 * gamma(z) : gamma 값을 반환 합니다.  
+* beta(a,b) : B(x,y) = Γ(x)Γ(y)/Γ(x+y) 을 이용하여 beta 함수 결과를 반환 합니다.  
 * fact(n) : gamma(z+1) == n! 을 이용하여 factorial 을 계산하여 반환 합니다. 
 * perm(n,r) : nPr의 순열 값을 반환 합니다. 단 현재는 parseInt 로 처리 가능한 수치만을 반환합니다. 
 

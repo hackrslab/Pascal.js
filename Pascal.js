@@ -123,6 +123,10 @@ Pascal.js
     return (z === floor(z)) ? round(rs) : rs;
   };
 
+  var beta = Pascal.beta = function(a,b) {
+    return (a < 0 || b < 0) ? NaN : (gamma(a) * gamma(b)) / gamma(a+b);
+  };
+
   var fact = Pascal.fact = function(num) {
     if(isNaN(num)) return NaN;
     return (num < 0) ? -1 : (num === 0) ? 1 : gamma(num+1);

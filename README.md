@@ -34,6 +34,7 @@ git clone git://github.com/insanehong/Pascal.js.git
 ```
 
 ## Unit Test
+Unit Test 는현재 QUnit을 사용하고 있습니다.  
 [test Page](http://insanehong.kr/Pascal.js/test/index.html)
 
 ## Document
@@ -45,6 +46,12 @@ Pascal.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 
 웹 단위 테스트 페이지에서 오류가 없음을 확인 하신후 Pull Request 날려주시면 됩니다. 
 
 혹은 저와 같이 개발에 같이 참여하시고 싶으 신분은 언제든 트위터  : [@insanehong](https://twitter.com) 혹은 insanehong@gmail.com 으로 연락주시기 바랍니다.
+
+* 코드 컨벤션
+	- tab : 스페이스 2칸
+  - brace : 줄바꿈 하지 않음
+	- , 는 줄바꿈후 맨 앞에
+	- local variable 은 scope 최상단에 선언.
 
 ## LiCENSE
 The MIT License

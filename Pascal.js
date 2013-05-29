@@ -132,6 +132,10 @@ Pascal.js
     return (num < 0) ? -1 : (num === 0) ? 1 : gamma(num+1);
   };
 
+  var random = Pascal.random = function(min,max) {
+    return floor(Math.random() * (max - min + 1)) + min;
+  };
+
   var add = Pascal.add = function(data,an) {
     data = data.filter(isNumber);
     if(data.length===0) return null;

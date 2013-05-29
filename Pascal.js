@@ -58,7 +58,7 @@ Pascal.js
     return (typeof array === 'undefined' || array.length === 0 || array ===null) ? true : false;
   }
 
-  function fnEach(array,fn) {
+  var arrayMap = Pascal.arrayMap = function(array,fn) {
     var tmep =[],
         length = array.length,
         i;
@@ -139,8 +139,15 @@ Pascal.js
   var add = Pascal.add = function(data,an) {
     data = data.filter(isNumber);
     if(data.length===0) return null;
-    data = fnEach(data,function(n) { return n + an; });
+    data = arrayMap(data,function(n) { return n + an; });
     return data ;
+  };
+
+  var multiply = Pascal.multiply = function(data,number) {
+    data = data.filter(isNumber);
+    if(data.length===0) return null;
+    data = arrayMap(data,function(n) { return n * number; });
+    return data ;  
   };
 
   var sum = Pascal.sum =  function(data,fn) {
@@ -168,7 +175,7 @@ Pascal.js
         i,
         result;
 
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
 
     data = data.filter(isNumber);
     total = sum(data);
@@ -178,7 +185,7 @@ Pascal.js
   var variance = Pascal.variance = function(data,fn) {
     var average;
     
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     average = mean(data);
     return mean(data,function(n){ return pow(n-average,2); });      
   };
@@ -194,7 +201,7 @@ Pascal.js
   var quantile = Pascal.quantile = function(data,p,fn) {
     var h , fh, N , i, q;
     
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     
     data = data.filter(isNumber).sort(ascSort);
     
@@ -213,7 +220,7 @@ Pascal.js
 
   var quartile = Pascal.quartile = function(data,fn) {
     var q1, q2, q3, q4;
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     
     data = data.filter(isNumber).sort(ascSort);
     
@@ -227,21 +234,41 @@ Pascal.js
   };
 
   var min = Pascal.min = function(data,fn) {
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     data = data.filter(isNumber);
     return (isEmpty(data)) ? null :  Math.min.apply(null,data);
   };
 
   var max = Pascal.max = function(data,fn) {
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     data = data.filter(isNumber);
     return (isEmpty(data)) ? null :  Math.max.apply(null,data);
   };
   
   var minmax = Pascal.minmax = function(data,fn) {
-    if(typeof fn !== 'undefined') data = fnEach(data,fn);
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
     data = data.filter(isNumber);
     return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
   };
+
+  var covar = Pascal.covar = function(arrayX,arrayY) {
+    var X = arrayX.filter(isNumber),
+        Y = arrayY.filter(isNumber),
+        XY = [],
+        temp = 0;
+
+    if(X.length !== Y.length || X.length===0) return NaN;
+
+    for(var i = 0; i < X.length ; i++ ) {
+      XY.push(X[i] * Y[i]);
+    }    
+
+    var meanX = mean(X),
+        meanY = mean(Y)
+        meanXY = mean(XY);
+    
+    return meanXY -  (meanX * meanY) ;  
+  };
+  
 
 }).call(this);

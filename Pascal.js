@@ -1,10 +1,14 @@
-/*
-Copyright (c) 2013 Insanehong and other contributors
-
-MIT LISENCE
-
-Pascal.js
-*/
+/**
+ * Pascal.js
+ * https://github.com/insanehong/Pascal.js
+ *
+ * Pascal.js is ans extendsive math library for javascript.
+ * This library is designed to help people of web developer who are development of Statistics,Chart library, office application and analytics.
+ *  
+ * Copyright (c) 2013 Insanehong and other contributors
+ * 
+ * MIT LISENCE
+ */
 (function() {
     
   var root = this;
@@ -22,8 +26,14 @@ Pascal.js
        exports = module.exports = Pascal;  
     }
     exports.Pascal = Pascal;
-  } else {
-  root.Pascal = Pascal; 
+  } 
+
+  if (typeof require !=='undefined' && typeof define !== 'undefined') {
+    define(function() { return Pascal; });
+  } 
+
+  if(typeof window !== 'undefined') {
+    root.Pascal = Pascal; 
   }
 
   Pascal.VERSION = '0.1.0';

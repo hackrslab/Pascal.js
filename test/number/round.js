@@ -26,7 +26,7 @@ test('소수점 넷째자리 까지 표현',function() {
 
 test('반올림 대상으로 문자열을 사용',function() {
 	var rn = Pascal.round('hello world');
-	deepEqual(rn, NaN , "Pascal.round('hello world') === NaN");	
+	deepEqual(rn, 'undefined' , "Pascal.round('hello world') === 'undefined'");	
 });
 
 test('반올림 대상으로 숫자형 문자를 사용',function() {
@@ -37,4 +37,9 @@ test('반올림 대상으로 숫자형 문자를 사용',function() {
 test('표현할 자리수를 문자를 사용하여 넘겼을 경우',function() {
 	var rn = Pascal.round(3.141592,'hello');
 	deepEqual(rn, 3 , "Pascal.round(3.141592,'hello') === 3");	
+});
+
+test('배열에 대한 처리 테스트[',function() {
+	var rn = Pascal.round([1,1.1,2,2.2,3,3.3,4,4.4,5,5.5]);
+	deepEqual(rn, [1,1,2,2,3,3,4,4,5,6] , "Pascal.round([1,1.1,2,2.2,3,3.3,4,4.4,5,5.5]) === [1,1,2,2,3,3,4,4,5,6]");	
 });

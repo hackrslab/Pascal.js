@@ -21,3 +21,8 @@ test('밑수가 2 로그 테스트',function(){
   deepEqual(Pascal.log(3, 2),1.5849625007211563,'Pascal.log(3, 2)===1.5849625007211563');
   deepEqual(Pascal.log(4, 2),2,'Pascal.log(4, 2)===2');
 });
+
+test('배열의 로그 처리 테스트 ',function(){
+  var array = [1,2,3,4];
+  deepEqual(Pascal.log(array, 2),[0,1,1.5849625007211563,2],'Pascal.log(array, 2)===0');
+});

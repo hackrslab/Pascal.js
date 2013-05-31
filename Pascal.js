@@ -79,7 +79,7 @@
 
     for(i=0; i < length; i++) tmep.push(fn.call(array,array[i],i)) ;  
     return tmep;    
-  }
+  };
 
   var log = Pascal.log = function(x,b) {
     if(isNumber(x)) {
@@ -302,7 +302,7 @@
     return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
   };
 
-  var covar = Pascal.covar = function(arrayX,arrayY) {
+  var cov = Pascal.covar = function(arrayX,arrayY) {
     var X = arrayX.filter(isNumber),
         Y = arrayY.filter(isNumber),
         XY = [],
@@ -315,7 +315,7 @@
     }    
 
     var meanX = mean(X),
-        meanY = mean(Y)
+        meanY = mean(Y),
         meanXY = mean(XY);
     
     return meanXY -  (meanX * meanY) ;  

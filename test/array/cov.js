@@ -6,7 +6,7 @@ test('공분산 계산식 검증',function() {
 			,result = Pascal.cov(a, b);
 		 	
 	
-	deepEqual(result, -4, 'Pascal.cov([1, 2, 3, 4, 5], [7, 5, 3, 1, -1 ])==== -4');
+	deepEqual(result, -5, 'Pascal.cov([1, 2, 3, 4, 5], [7, 5, 3, 1, -1 ])==== -5');
 });
 
 test('공분산 성질 1 .Cov(X, Y) = Cov(Y, X)',function() {

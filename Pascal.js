@@ -234,15 +234,37 @@
   };
 
   var variance = Pascal.variance = function(data,fn) {
-    var average;
+    var vmean,sumstd;
     
     if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    average = mean(data);
-    return mean(data,function(n){ return pow(n-average,2); });      
+    
+    vmean = mean(data);
+    sumstd = sum(data,function(n) { return pow(n-vmean,2); });
+    return sumstd / (data.length -1); 
+  };
+
+  var varp = Pascal.varp = function(data,fn) {
+    var powmean,meanpow;
+    
+    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
+    console.log(data);
+    console.log(mean(data));
+    meanpow = pow(mean(data),2);
+    
+
+    powmean = mean(data,function(n){ return pow(n,2); });    
+    console.log(meanpow);
+    console.log(powmean);
+    console.log(powmean - meanpow);
+    return powmean - meanpow;       
   };
 
   var stdev = Pascal.stdev = function(data,fn) {
-    return round(sqrt(variance(data,fn)),2);
+    return sqrt(variance(data,fn));
+  };
+
+  var stdevp = Pascal.stdevp = function(data,fn) {
+    return sqrt(varp(data,fn));
   };
   
   var median = Pascal.median = function(data,fn) {
@@ -305,6 +327,24 @@
   var cov = Pascal.cov = function(arrayX,arrayY) {
     var X = arrayX.filter(isNumber),
         Y = arrayY.filter(isNumber),
+        meanX = mean(X),
+        meanY = mean(Y),
+        covData = [],
+        i = 0, total=0;
+
+    if(X.length !== Y.length || X.length===0) return NaN;
+
+    for( ; i < X.length ; i++ ) {
+      covData.push( (X[i] - meanX) * (Y[i] - meanY) );
+    }    
+
+    total = sum(covData);
+    return total / (X.length -1) ;  
+  };
+  
+  var covp = Pascal.covp = function(arrayX,arrayY) {
+    var X = arrayX.filter(isNumber),
+        Y = arrayY.filter(isNumber),
         XY = [],
         temp = 0;
 
@@ -320,6 +360,5 @@
     
     return meanXY -  (meanX * meanY) ;  
   };
-  
 
 }).call(this);

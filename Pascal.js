@@ -230,7 +230,7 @@
 
     data = data.filter(isNumber);
     total = sum(data);
-    return round(total/data.length,2);
+    return total / data.length;
   };
 
   var variance = Pascal.variance = function(data,fn) {
@@ -302,7 +302,7 @@
     return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
   };
 
-  var cov = Pascal.covar = function(arrayX,arrayY) {
+  var cov = Pascal.cov = function(arrayX,arrayY) {
     var X = arrayX.filter(isNumber),
         Y = arrayY.filter(isNumber),
         XY = [],

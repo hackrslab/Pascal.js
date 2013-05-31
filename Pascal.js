@@ -355,4 +355,11 @@
     return meanXY -  (meanX * meanY) ;  
   };
 
+  var corr = Pascal.corr = function(arrayX,arrayY) {
+    var X = arrayX.filter(isNumber),
+        Y = arrayY.filter(isNumber);
+
+    return cov(X,Y) / ( stdev(X) * stdev(Y) ) ;
+  };
+
 }).call(this);

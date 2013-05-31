@@ -247,15 +247,9 @@
     var powmean,meanpow;
     
     if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    console.log(data);
-    console.log(mean(data));
     meanpow = pow(mean(data),2);
-    
-
     powmean = mean(data,function(n){ return pow(n,2); });    
-    console.log(meanpow);
-    console.log(powmean);
-    console.log(powmean - meanpow);
+
     return powmean - meanpow;       
   };
 

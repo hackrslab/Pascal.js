@@ -1,10 +1,10 @@
 # Pascal
-Pascal.js 는 Javascript 내장객체인 Math Object 에서 지원하지 않는 수학,통계,수치, 물리적 계산등의 데이터를 다룰때 필요한 모듈 입니다.
-차트,Canvas,통계,Vector  등과 같이 수치 계산이 빈번히 일어나는 작업을 할때 유용히 사용하실 수 있습니다.
-현재 배포 버전이 아닌 개발버전을 먼저 올려 두었습니다. 자세한 API 가 없는 관계로 `test` 를 참고 하시기 바랍니다.
+Pascal.js 는 Javascript Build-in Object Math 에서 지원하지 않는 산술계산 및 통계,배열,행렬 계산등의 데이터 처리를 위해 만들어진 라이브러리 입니다.
+Pasacl.js은 Browser 에서뿐만 아니라 Server-side 에서도 동작 하도록 설계 되었습니다.
+이 라이브러리에서는 UI Level을 지원하지 않습니다. 단 이후 Pascal.ui.js 등을 지원할 계획은 있으며 Pascal.ui.js 를 사용하지 않더라도 
+Google Chart, 혹은 d3.js 등을 사용하여 visualization 등을 처리 할수 있도록 데이터 처리 영역을 지원 합니다. 
 
-## 모듈 
-Pascal 는 기본적으로  `module`에 포함되어 지거나 `Global Scope`의 `Pascal` 네임스페이스만을 사용합니다.
+## Support CommonJS 
 
 ```javascript
 if(typeof exports !== 'undefined') {
@@ -12,8 +12,22 @@ if(typeof exports !== 'undefined') {
      exports = module.exports = Pascal;  
   }
   exports.Pascal = Pascal;
-} else {
-root.Pascal = Pascal; 
+} 
+```
+
+## Support AMD
+
+```javascript
+if (typeof require !=='undefined' && typeof define !== 'undefined') {
+  define(function() { return Pascal; });
+} 
+```
+
+## Support Moden Broswer 
+
+```javascript
+if(typeof window !== 'undefined') {
+  root.Pascal = Pascal; 
 }
 ```
 
@@ -34,24 +48,23 @@ git clone git://github.com/insanehong/Pascal.js.git
 ```
 
 ## Unit Test
-Unit Test 는현재 QUnit을 사용하고 있습니다.  
+Unit Test 로는 `Qunit` 을 사용 합니다. 테스트 결과는 아래의 링크에서 확인 하실 수 있습니다.  
+
 [test Page](http://insanehong.kr/Pascal.js/test/index.html)
 
 ## Document
-[한국](https://github.com/insanehong/Pascal.js/tree/master/doc/ko)
+다국어 문서를 지원할 예정 이지만 현재는 한국어로만 작성되어 있습니다. 하지만 현재 개발된 내용을 모두 담아내고 있지는 못하고 있음을 밝힙니다.
+현재까지 작성된 문서내용은 아래 링크에서 확인 하실수 있습니다.
+
+[한국어](https://github.com/insanehong/Pascal.js/tree/master/doc/ko)
 
 # for Contributors
 Pascal.js 는 오픈소스 라이브러리로 누구나 함께 참여하 실수 있습니다. 
 참여 방법은 test 디렉토리에 수정 혹은 추가 한 메소드에 대한 테스트 코드를 작성하고 test/index.html 에 추가된 테스트 코드를 삽입 합니다. 
-웹 단위 테스트 페이지에서 오류가 없음을 확인 하신후 Pull Request 날려주시면 됩니다. 
+웹 단위 테스트 페이지에서 오류가 없음을 확인 하신후 `Pull Request` 하시면 됩니다. 
 
-혹은 저와 같이 개발에 같이 참여하시고 싶으 신분은 언제든 트위터  : [@insanehong](https://twitter.com) 혹은 insanehong@gmail.com 으로 연락주시기 바랍니다.
 
-* 코드 컨벤션
-	- tab : 스페이스 2칸
-  - brace : 줄바꿈 하지 않음
-	- , 는 줄바꿈후 맨 앞에
-	- local variable 은 scope 최상단에 선언.
+혹은 저와 같이 개발에 같이 참여하시고 싶으 신분은 언제든 트위터  : [@insanehong](https://twitter.com/insanehong) 혹은 [insanehong@gmail.com](mailto:insanehong@gmail.com) 으로 연락주시기 바랍니다.
 
 ## LiCENSE
 The MIT License

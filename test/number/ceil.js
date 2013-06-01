@@ -26,7 +26,7 @@ test('소수점 넷째자리 까지 표현',function() {
 
 test('올림 대상으로 문자열을 사용',function() {
 	var rn = Pascal.ceil('hello world');
-	deepEqual(rn, 'undefined', "Pascal.ceil('hello world') === 'undefined'");	
+	deepEqual(rn, NaN, "Pascal.ceil('hello world') === NaN");	
 });
 
 test('올림 대상으로 숫자형 문자를 사용',function() {

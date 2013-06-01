@@ -88,11 +88,11 @@
       return (typeof b === 'undefined') ? Math.log(x) : (b===1) ? 0 : Math.log(x) / Math.log(b);
     } else if(isArray(x)) {
       x = x.filter(isNumber);
-      if(x.length === 0 ) return undef;
+      if(x.length === 0 ) return NaN;
       return arrayMap(x,function(n) { return log(n,b); });
     } 
     
-    return undef;
+    return NaN;
   };
 
   var log10 = Pascal.log10 = function(x) {
@@ -109,11 +109,11 @@
       return (digits === 'undefined' || isNaN(digits)) ? Math.round(x) : Math.round(x*pow(10,digits))/pow(10,digits);   
     } else if(isArray(x)) {
       x = x.filter(isNumber);
-      if(x.length === 0 ) return undef;
+      if(x.length === 0 ) return NaN;
       return arrayMap(x,function(n) { return round(n,digits); });
     } 
 
-    return undef;
+    return NaN;
   };
 
   var ceil = Pascal.ceil = function(x,digits) {
@@ -122,11 +122,11 @@
       return (typeof digits === 'undefined' || isNaN(digits)) ? Math.ceil(x) : Math.ceil(x*pow(10,digits))/pow(10,digits);   
     } else if(isArray(x)) {
       x = x.filter(isNumber);
-      if(x.length === 0 ) return undef;
+      if(x.length === 0 ) return NaN;
       return arrayMap(x,function(n) { return ceil(n,digits); });
     }
 
-    return undef;
+    return NaN;
   };
 
   var floor = Pascal.floor = function(x,digits) {
@@ -135,10 +135,10 @@
       return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(x) : Math.floor(x*pow(10,digits))/pow(10,digits);   
     } else if(isArray(x)) {
       x = x.filter(isNumber);
-      if(x.length === 0 ) return undef;
+      if(x.length === 0 ) return NaN;
       return arrayMap(x,function(n) { return floor(n,digits); });
     }
-    return undef;
+    return NaN;
   };
 
    var perm = Pascal.perm = function(n,r) {
@@ -171,7 +171,7 @@
       if(z.length === 0 ) return undef;
       return arrayMap(z,function(n) { return gamma(n); });
     }
-    return undef;
+    return NaN;
   };
 
   var beta = Pascal.beta = function(a,b) {

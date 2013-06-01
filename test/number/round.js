@@ -26,11 +26,11 @@ test('소수점 넷째자리 까지 표현',function() {
 
 test('반올림 대상으로 문자열을 사용',function() {
 	var rn = Pascal.round('hello world');
-	deepEqual(rn, 'undefined' , "Pascal.round('hello world') === 'undefined'");	
+	deepEqual(rn, NaN , "Pascal.round('hello world') === NaN");	
 });
 
 test('반올림 대상으로 숫자형 문자를 사용',function() {
-	var rn = Pascal.round('003.141592');
+	var rn = Pascal.round('003.141592');z
 	deepEqual(rn, 3 , "Pascal.round('003.141592') === 3");	
 });
 

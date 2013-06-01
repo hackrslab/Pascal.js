@@ -30,7 +30,7 @@ test('반올림 대상으로 문자열을 사용',function() {
 });
 
 test('반올림 대상으로 숫자형 문자를 사용',function() {
-	var rn = Pascal.round('003.141592');z
+	var rn = Pascal.round('003.141592');
 	deepEqual(rn, 3 , "Pascal.round('003.141592') === 3");	
 });
 

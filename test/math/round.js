@@ -38,8 +38,3 @@ test('표현할 자리수를 문자를 사용하여 넘겼을 경우',function()
 	var rn = Pascal.round(3.141592,'hello');
 	deepEqual(rn, 3 , "Pascal.round(3.141592,'hello') === 3");	
 });
-
-test('배열에 대한 처리 테스트[',function() {
-	var rn = Pascal.round([1,1.1,2,2.2,3,3.3,4,4.4,5,5.5]);
-	deepEqual(rn, [1,1,2,2,3,3,4,4,5,6] , "Pascal.round([1,1.1,2,2.2,3,3.3,4,4.4,5,5.5]) === [1,1,2,2,3,3,4,4,5,6]");	
-});

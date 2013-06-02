@@ -3,7 +3,7 @@ module('로그 함수(log) 테스트');
 test('자연로그 범위 테스트',function(){
   deepEqual(Pascal.log(1),0,'Pascal.log(1)===0');
   deepEqual(Pascal.log(0),-Infinity,'Pascal.log(0)===-Infinity');
-  deepEqual(Pascal.log(-1),NaN,'Pascal.log(-1)===NaN');
+  deepEqual(Pascal.log(-1),NaN,'Pascal.log(3)===NaN');
 });
 
 test('밑수지정 로그 테스트',function(){

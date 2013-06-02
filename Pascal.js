@@ -7,6 +7,8 @@
  *  
  * Copyright (c) 2013 Insanehong and other contributors
  * 
+ * Contributors
+ * @Geekdani, @J2P_
  * MIT LISENCE
  */
 (function() {
@@ -36,7 +38,7 @@
     root.Pascal = Pascal; 
   }
 
-  Pascal.VERSION = '0.1.0';
+  Pascal.VERSION = '0.2.1';
 
   var matrix = Pascal.maxtrix = {},
       array = Pascal.array = {},
@@ -45,6 +47,8 @@
       abs = Pascal.abs = Math.abs,
       pow = Pascal.pow = Math.pow,
       acos = Pascal.acos = Math.acos,
+      asin = Pascal.asin = Math.asin,
+      atan = Pascal.atan = Math.atan,
       atan2 = Pascal.atan2 = Math.atan2,
       cos = Pascal.cos = Math.cos,
       sin = Pascal.sin = Math.sin,
@@ -72,6 +76,16 @@
     return (typeof array === 'undefined' || array.length === 0 || array ===null) ? true : false;
   }
 
+  function isESL(number) {
+    var epsilon = abs(number - floor(number)) ;
+    if(isFinite(number)) {
+      console.log(epsilon);
+      return ( epsilon > 0.9999999 || epsilon < 0.0000001) ? true : false;
+    }
+
+    return false;
+  }
+  
   var arrayMap = Pascal.arrayMap = function(array,fn) {
     var tmep =[],
         length = array.length,
@@ -81,97 +95,67 @@
     return tmep;    
   };
 
-  var log = Pascal.log = function(x,b) {
-    if(isNumber(x)) {
-      x = Number(x);
-      if(x <= 0) return NaN;
-      return (typeof b === 'undefined') ? Math.log(x) : (b===1) ? 0 : Math.log(x) / Math.log(b);
-    } else if(isArray(x)) {
-      x = x.filter(isNumber);
-      if(x.length === 0 ) return NaN;
-      return arrayMap(x,function(n) { return log(n,b); });
-    } 
-    
-    return NaN;
+  var log = Pascal.log = function(exp,base) {
+    return (typeof base === 'undefined' || !isNumber(base)) ? Math.log(exp) : (base===1) ? 0 : Math.log(exp) / Math.log(base);
   };
 
-  var log10 = Pascal.log10 = function(x) {
-    return log(x,10);
+  var log10 = Pascal.log10 = function(exp) {
+    return log(exp,10);
   };
 
-  var log2 = Pascal.log2 = function(x) {
-    return log(x,2);
+  var log2 = Pascal.log2 = function(exp) {
+    return log(exp,2);
   };
 
-  var round = Pascal.round = function(x,digits) {
-    if(isNumber(x)) {
-      x = Number(x);
-      return (digits === 'undefined' || isNaN(digits)) ? Math.round(x) : Math.round(x*pow(10,digits))/pow(10,digits);   
-    } else if(isArray(x)) {
-      x = x.filter(isNumber);
-      if(x.length === 0 ) return NaN;
-      return arrayMap(x,function(n) { return round(n,digits); });
-    } 
-
-    return NaN;
+  var round = Pascal.round = function(number,digits) {
+    return (digits === 'undefined' || isNaN(digits)) ? Math.round(number) : Math.round(number*pow(10,digits))/pow(10,digits);  
   };
 
-  var ceil = Pascal.ceil = function(x,digits) {
-    if(isNumber(x)) {
-      x = Number(x);
-      return (typeof digits === 'undefined' || isNaN(digits)) ? Math.ceil(x) : Math.ceil(x*pow(10,digits))/pow(10,digits);   
-    } else if(isArray(x)) {
-      x = x.filter(isNumber);
-      if(x.length === 0 ) return NaN;
-      return arrayMap(x,function(n) { return ceil(n,digits); });
-    }
-
-    return NaN;
+  var ceil = Pascal.ceil = function(number,digits) {
+    return (digits === 'undefined' || isNaN(digits)) ? Math.ceil(number) : Math.ceil(number*pow(10,digits))/pow(10,digits);  
   };
 
-  var floor = Pascal.floor = function(x,digits) {
-    if(isNumber(x)) {
-      x = Number(x);
-      return (typeof digits === 'undefined' || isNaN(digits)) ? Math.floor(x) : Math.floor(x*pow(10,digits))/pow(10,digits);   
-    } else if(isArray(x)) {
-      x = x.filter(isNumber);
-      if(x.length === 0 ) return NaN;
-      return arrayMap(x,function(n) { return floor(n,digits); });
-    }
-    return NaN;
+  var floor = Pascal.floor = function(number,digits) {
+    return (digits === 'undefined' || isNaN(digits)) ? Math.floor(number) : Math.floor(number*pow(10,digits))/pow(10,digits);  
   };
 
-   var perm = Pascal.perm = function(n,r) {
+  var min = Pascal.min = function(array,fn) {
+    return (typeof fn !== 'undefined') ? Math.min.apply(null, array.map(fn).filter(isNumber)) : Math.min.apply(null, array.filter(isNumber));
+  };
+
+  var max = Pascal.max = function(array,fn) {
+    return (typeof fn !== 'undefined') ? Math.max.apply(null, array.map(fn).filter(isNumber)) : Math.max.apply(null, array.filter(isNumber));
+  };
+  
+  var minmax = Pascal.minmax = function(array,fn) {
+    return [min(array,fn), max(array,fn)];
+  };
+
+  var perm = Pascal.perm = function(n,r) {
     if(isNaN(n) || isNaN(r)) return NaN;
     if(n <= r) return fact(n);
     return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
   };
 
-  var gamma = Pascal.gamma = function(z) {
-    if(isNumber(z)) {
-      z = Number(z);
-      var g = 7,
-          p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905,
-              -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7],
-          x = p[0],
-          length = p.length,
-          i, t, rs;
+  var gamma = Pascal.gamma = function(number) {
+    var g = 7,
+        p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905,
+            -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7],
+        x = p[0],
+        length = p.length,
+        i=1, 
+        t, 
+        rs;
 
-      if(z < 0.5 ) return PI / ( sin(PI * z) * gamma(1 - z));
-      
-      z -= 1;
-      t = z + g + 0.5;
-      
-      for (i=1 ; i < length; i++) x += p[i] / (z + i );
-         
-      rs = parseFloat(sqrt(2 * PI) * pow(t, (z + 0.5)) * exp(-t) * x);
-      return (z === floor(z)) ? round(rs) : rs;
-    } else if(isArray(z)) {
-       z = z.filter(isNumber);
-      if(z.length === 0 ) return undef;
-      return arrayMap(z,function(n) { return gamma(n); });
-    }
-    return NaN;
+    if(number < 0.5 ) return PI / ( sin(PI * number) * gamma(1 - number));
+    
+    number -= 1;
+    t = number + g + 0.5;
+    
+    for ( ; i < length; i++) x += p[i] / (number + i );
+       
+    rs = parseFloat(sqrt(2 * PI) * pow(t, (number + 0.5)) * exp(-t) * x);
+    return (isESL(rs)) ? round(rs) : rs;
   };
 
   var beta = Pascal.beta = function(a,b) {
@@ -300,23 +284,7 @@
     return (data.length === 0 ) ? null : [q0,q1,q2,q3,q4];
   };
 
-  var min = Pascal.min = function(data,fn) {
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    data = data.filter(isNumber);
-    return (isEmpty(data)) ? null :  Math.min.apply(null,data);
-  };
-
-  var max = Pascal.max = function(data,fn) {
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    data = data.filter(isNumber);
-    return (isEmpty(data)) ? null :  Math.max.apply(null,data);
-  };
   
-  var minmax = Pascal.minmax = function(data,fn) {
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    data = data.filter(isNumber);
-    return (data.length ===0) ? null : (data.length === 1 ) ? [data,data] : [min(data), max(data)];
-  };
 
   var cov = Pascal.cov = function(arrayX,arrayY) {
     var X = arrayX.filter(isNumber),

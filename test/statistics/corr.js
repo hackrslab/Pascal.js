@@ -13,7 +13,6 @@ test('상관계수는 -1  <= x >=1 사이에 존재해야 함.',function(){
 	var a = [12, 21, 16, 14, 18,16],
 			b = [22, 45, 37, 30, 28,36 ],
 			result = Pascal.corr(a, b);
-			console.log(result);
 	var t = (-1  <= result && 1  >= result) ? true : false;
 	ok(t === true , 'passed!');
 });

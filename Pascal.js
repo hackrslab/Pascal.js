@@ -56,11 +56,11 @@
       sqrt = Pascal.sqrt = Math.sqrt,
       exp = Pascal.exp = Math.exp;
       
-  function ascSort(a,b) {
+  function ascending(a,b) {
     return (a < b) ? -1 : (a > b) ? 1 : 0;
   }
 
-  function descSort(a,b) {
+  function descending(a,b) {
     return (b < a) ? -1 : (b > a) ? 1 : 0;
   }
 
@@ -79,13 +79,16 @@
   function isESL(number) {
     var epsilon = abs(number - floor(number)) ;
     if(isFinite(number)) {
-      console.log(epsilon);
       return ( epsilon > 0.9999999 || epsilon < 0.0000001) ? true : false;
     }
 
     return false;
   }
   
+  function originfn(n) {
+    return n;
+  }
+
   var arrayMap = Pascal.arrayMap = function(array,fn) {
     var tmep =[],
         length = array.length,
@@ -120,21 +123,21 @@
   };
 
   var min = Pascal.min = function(array,fn) {
-    return (typeof fn !== 'undefined') ? Math.min.apply(null, array.map(fn).filter(isNumber)) : Math.min.apply(null, array.filter(isNumber));
+    var mapfn = fn || originfn;
+    return Math.min.apply(null, array.map(mapfn).filter(isNumber));
   };
 
   var max = Pascal.max = function(array,fn) {
-    return (typeof fn !== 'undefined') ? Math.max.apply(null, array.map(fn).filter(isNumber)) : Math.max.apply(null, array.filter(isNumber));
+    var mapfn = fn || originfn;
+    return Math.max.apply(null, array.map(mapfn).filter(isNumber));
   };
   
   var minmax = Pascal.minmax = function(array,fn) {
     return [min(array,fn), max(array,fn)];
   };
 
-  var perm = Pascal.perm = function(n,r) {
-    if(isNaN(n) || isNaN(r)) return NaN;
-    if(n <= r) return fact(n);
-    return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
+  var random = Pascal.random = function(min,max) {
+    return floor(Math.random() * (Number(max) - Number(min) + 1)) + Number(min);
   };
 
   var gamma = Pascal.gamma = function(number) {
@@ -147,6 +150,9 @@
         t, 
         rs;
 
+    if(!isNumber(number)) return NaN;
+    else Number(number);    
+    
     if(number < 0.5 ) return PI / ( sin(PI * number) * gamma(1 - number));
     
     number -= 1;
@@ -155,108 +161,105 @@
     for ( ; i < length; i++) x += p[i] / (number + i );
        
     rs = parseFloat(sqrt(2 * PI) * pow(t, (number + 0.5)) * exp(-t) * x);
-    return (isESL(rs)) ? round(rs) : rs;
+    return (isESL(rs)) ? round(rs,7) : rs;
   };
 
   var beta = Pascal.beta = function(a,b) {
     return (a < 0 || b < 0) ? NaN : (gamma(a) * gamma(b)) / gamma(a+b);
   };
 
-  var fact = Pascal.fact = function(num) {
-    if(isNaN(num)) return NaN;
-    return (num < 0) ? -1 : (num === 0) ? 1 : gamma(num+1);
+  var fact = Pascal.fact = function(number) {
+    if(!isNumber(number)) return NaN;
+    else number = Number(number);
+
+    return (number < 0) ? -1 : (number === 0) ? 1 : gamma(number+1);
   };
 
-  var random = Pascal.random = function(min,max) {
-    return floor(Math.random() * (max - min + 1)) + min;
+  var perm = Pascal.perm = function(n,r) {
+    if(isNaN(n) || isNaN(r)) return NaN;
+    else {
+      n = Number(n);
+      r = Number(r); 
+    }
+
+    if(n <= r) return fact(n);
+    return (r===0) ? 1 : parseInt(n * perm(n-1,r-1),10); 
   };
 
-  var add = Pascal.add = function(data,an) {
-    data = data.filter(isNumber);
-    if(data.length===0) return null;
-    data = arrayMap(data,function(n) { return n + an; });
-    return data ;
-  };
-
-  var multiply = Pascal.multiply = function(data,number) {
-    data = data.filter(isNumber);
-    if(data.length===0) return null;
-    data = arrayMap(data,function(n) { return n * number; });
-    return data ;  
-  };
-
-  var sum = Pascal.sum =  function(data,fn) {
+  var sum = Pascal.sum =  function(array,fn) {
     var total = 0,
         leng = 0,
         result,
-        i;
+        i,
+        mapfn = fn || originfn;
     
-    if(typeof fn === 'undefined') {
-      data = data.filter(isNumber);
-      leng = data.length;
-      for(i=0; i < leng; i++) {
-        total+= Number(data[i]);
-      }
-    } else {
-      leng = data.length;
-      for(i=0; i < leng; i++) total+=(isNaN(result = fn.call(data,data[i],i))) ? 0 : Number(result);    
-    }  
+    array = array.map(mapfn).filter(isNumber);
+    leng = array.length;
+    for(i=0; i < leng; i++) {
+      total+= Number(array[i]);
+    }
     
     return total;
   };
 
-  var mean = Pascal.mean = function(data,fn) {
+  var mean = Pascal.mean = function(array,fn) {
     var total=0,
         i,
-        result;
+        result,
+        mapfn = fn || originfn;
 
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-
-    data = data.filter(isNumber);
-    total = sum(data);
-    return total / data.length;
+    array = array.map(mapfn).filter(isNumber);
+    total = sum(array);
+    return total / array.length;
   };
 
-  var variance = Pascal.variance = function(data,fn) {
-    var vmean,sumstd;
+  var variance = Pascal.variance = function(array,fn) {
+    var vmean,
+        sumstd,
+        mapfn = fn || originfn;
     
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
+    array = array.map(mapfn).filter(isNumber);
     
-    vmean = mean(data);
-    sumstd = sum(data,function(n) { return pow(n-vmean,2); });
-    return sumstd / (data.length -1); 
+    vmean = mean(array);
+    sumstd = sum(array,function(n) { return pow(n-vmean,2); });
+    return sumstd / (array.length -1); 
   };
 
-  var varp = Pascal.varp = function(data,fn) {
-    var powmean,meanpow;
+  var varp = Pascal.varp = function(array,fn) {
+    var powmean,
+        meanpow,
+        mapfn = fn || originfn;
     
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    meanpow = pow(mean(data),2);
-    powmean = mean(data,function(n){ return pow(n,2); });    
+    array = array.map(mapfn).filter(isNumber);
+    meanpow = pow(mean(array),2);
+    powmean = mean(array,function(n){ return pow(n,2); });    
 
     return powmean - meanpow;       
   };
 
-  var stdev = Pascal.stdev = function(data,fn) {
-    return sqrt(variance(data,fn));
+  var stdev = Pascal.stdev = function(array,fn) {
+    return sqrt(variance(array,fn));
   };
 
-  var stdevp = Pascal.stdevp = function(data,fn) {
-    return sqrt(varp(data,fn));
+  var stdevp = Pascal.stdevp = function(array,fn) {
+    return sqrt(varp(array,fn));
   };
   
-  var median = Pascal.median = function(data,fn) {
-    return quantile(data,0.5,fn);  
+  var median = Pascal.median = function(array,fn) {
+    return quantile(array,0.5,fn);  
   };    
 
-  var quantile = Pascal.quantile = function(data,p,fn) {
-    var h , fh, N , i, q;
+  var quantile = Pascal.quantile = function(array,p,fn) {
+    var h,
+        fh,
+        N,
+        i,
+        q,
+        mapfn = fn || originfn;
     
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
-    
-    data = data.filter(isNumber).sort(ascSort);
-    
-    N = data.length;
+    array = array.map(mapfn).filter(isNumber).sort(ascending);
+ 
+    N = array.length;
     
     if(N === 0 ) return null;
 
@@ -264,27 +267,29 @@
     hf = floor(h);
     i = hf -1;
     
-    q = data[i] + ((h-hf)*(data[hf] - data[i]));
+    q = Number(array[i]) + ((h-hf)*(Number(array[hf]) - Number(array[i])));
     
     return q;
   };
 
-  var quartile = Pascal.quartile = function(data,fn) {
-    var q1, q2, q3, q4;
-    if(typeof fn !== 'undefined') data = arrayMap(data,fn);
+  var quartile = Pascal.quartile = function(array,fn) {
+    var q1,
+        q2,
+        q3,
+        q4,
+        mapfn = fn || originfn;
     
-    data = data.filter(isNumber).sort(ascSort);
     
-    q0 = min(data);
-    q1 = quantile(data,0.25),
-    q2 = quantile(data,0.5),
-    q3 = quantile(data,0.75),
-    q4 = max(data);
+    array = array.map(mapfn).filter(isNumber).sort(ascending);
+    
+    q0 = min(array);
+    q1 = quantile(array,0.25),
+    q2 = quantile(array,0.5),
+    q3 = quantile(array,0.75),
+    q4 = max(array);
 
-    return (data.length === 0 ) ? null : [q0,q1,q2,q3,q4];
+    return (array.length === 0 ) ? null : [q0,q1,q2,q3,q4];
   };
-
-  
 
   var cov = Pascal.cov = function(arrayX,arrayY) {
     var X = arrayX.filter(isNumber),

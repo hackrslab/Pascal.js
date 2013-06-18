@@ -38,13 +38,13 @@ if(typeof window !== 'undefined') {
 * 테스트가 포함된 저장소 전체를 원하는 경우.
 
 ```
-https://github.com/insanehong/Pascal.js
+https://github.com/hackrslab/Pascal.js
 ```
 
 Or
 
 ```
-git clone git://github.com/insanehong/Pascal.js.git
+git clone git://github.com/hackrslab/Pascal.js.git
 ```
 
 ## Unit Test

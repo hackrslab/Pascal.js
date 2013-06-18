@@ -8,7 +8,9 @@
  * Copyright (c) 2013 Insanehong and other contributors
  * 
  * Contributors
- * @Geekdani, @J2P_
+ *
+ * Special Thanks @Geekdani, @J2P_
+ * 
  * MIT LISENCE
  */
 (function() {
@@ -161,7 +163,7 @@
     for ( ; i < length; i++) x += p[i] / (number + i );
        
     rs = parseFloat(sqrt(2 * PI) * pow(t, (number + 0.5)) * exp(-t) * x);
-    return (isESL(rs)) ? round(rs,7) : rs;
+    /return (isESL(rs)) ? round(rs,7) : rs;
   };
 
   var beta = Pascal.beta = function(a,b) {
@@ -253,7 +255,7 @@
     var h,
         fh,
         N,
-        i,
+        i,/
         q,
         mapfn = fn || originfn;
     

@@ -337,4 +337,30 @@
     return cov(X,Y) / ( stdev(X) * stdev(Y) ) ;
   };
 
+  var isPrime = Pascal.isPrime = function ( num ) {
+    if (num < 2) return false;
+    var i = 2,
+        sqrt = Pascal.sqrt(num);
+    for(; i<=sqrt; ++i){
+      if(num % i == 0) return false;
+    }
+    return true;
+  };
+
+  var primes = Pascal.primes = function ( limit, withSieve ) {
+    var sieve = [],
+        primes = [],
+        i = 2,
+        j;
+    for(; i <= limit; ++i){
+      if(!sieve[i]){
+        primes.push(i);
+        for (j = i << 1; j <= limit; j += i){
+          sieve[j] = true;
+        }
+      }
+    }
+    return withSieve ? {'primes' : primes, 'sieve' : sieve} : primes;
+  };
+
 }).call(this);

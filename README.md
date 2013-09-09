@@ -50,7 +50,7 @@ git clone git://github.com/hackrslab/Pascal.js.git
 ## Unit Test
 Unit Test 로는 `Qunit` 을 사용 합니다. 테스트 결과는 아래의 링크에서 확인 하실 수 있습니다.  
 
-[test Page](http://insanehong.kr/Pascal.js/test/index.html)
+[test Page](http://hackrslab.github.io/Pascal.js/test/index.html)
 
 ## Document
 다국어 문서를 지원할 예정 이지만 현재는 한국어로만 작성되어 있습니다. 하지만 현재 개발된 내용을 모두 담아내고 있지는 못하고 있음을 밝힙니다.

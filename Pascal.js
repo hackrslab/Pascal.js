@@ -348,17 +348,21 @@
   };
 
   var primes = Pascal.primes = function ( limit, withSieve ) {
-    var sieve = [],
+    var stub = [],
+        sieve = [1],
         primes = [],
         i = 2,
         j;
     for(; i <= limit; ++i){
-      if(!sieve[i]){
+      if(!stub[i]){
         primes.push(i);
         for (j = i << 1; j <= limit; j += i){
-          sieve[j] = true;
+          stub[j] = true;
         }
+      }else{
+          sieve.push(i);
       }
+      
     }
     return withSieve ? {'primes' : primes, 'sieve' : sieve} : primes;
   };
